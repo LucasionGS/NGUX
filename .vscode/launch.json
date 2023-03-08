@@ -43,7 +43,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Chrome",
-      "url": "http://localhost:3080", // This should be changed if not using the default IP/Port
+      "url": "http://192.168.0.31:3080", // This should be changed if not using the default IP/Port
       "webRoot": "${workspaceFolder}/ui",
     },
   ],

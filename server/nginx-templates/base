@@ -1,0 +1,46 @@
+server {
+  listen 80;
+
+  server_name {{server_name}};
+
+  root /var/www/vhosts/{{server_name}};
+
+  index index.html index.htm index.php;
+
+  charset utf-8;
+
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location = /robots.txt  { access_log off; log_not_found off; }
+
+  error_log /var/www/log/{{server_name}}/error_log error;
+  access_log /var/www/log/{{server_name}}/access_log;
+
+  sendfile off;
+
+  fastcgi_intercept_errors on;
+
+  #auth_basic           "IonServer Restricted";
+  #auth_basic_user_file /var/www/vhosts/{{server_name}}/.htpasswd;
+
+  #location / {
+  #  proxy_set_header X-Forwarded-For $remote_addr;
+  #  proxy_set_header Host $http_host;
+  #  proxy_pass       http://localhost:<PORT>;
+  #}
+
+  #location ~ \.php {
+  #  fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+  #  fastcgi_split_path_info ^((?U).+\.php)(/?.+)$;
+  #  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  #  fastcgi_param PATH_INFO $fastcgi_path_info;
+  #  fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+  #  fastcgi_read_timeout 600s;
+  #  fastcgi_send_timeout 600s;
+  #  fastcgi_index index.php;
+  #  include /etc/nginx/fastcgi_params;
+  #}
+
+  location ~ /\.ht {
+    deny all;
+  }
+}
